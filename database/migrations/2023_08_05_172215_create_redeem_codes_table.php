@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('redeems', function (Blueprint $table) {
+        Schema::create('redeem_codes', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id")
                 ->references("id")
