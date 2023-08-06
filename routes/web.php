@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(UserController::class)->name('user.')->group(function () {
+    Route::get('/login', 'loginView')->name('login.view');
+    Route::post('/login/auth', 'auth')->name('login.process');
+    Route::get('/register', 'registerView')->name('register.view');
+    Route::post('/register/add', 'register')->name('register.add');
+    Route::get('/admin/login', 'loginAdminView')->name('login.admin.view');
+    Route::get('/admin/login/auth', 'adminAuth')->name('login.admin.process');
+    Route::get('/forgot-password', 'forgotPasswordView')->name('forgot.password.view');
+    Route::post('/forgot-password/reset', 'resetPassword')->name('forgot.password.reset.process');
+    Route::post('/logout', 'logout')->name('logout');
 });
+
