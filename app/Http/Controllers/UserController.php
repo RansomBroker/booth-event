@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use phpDocumentor\Reflection\Utils;
+
 use function Symfony\Component\String\b;
 
 class UserController extends Controller
@@ -30,7 +32,7 @@ class UserController extends Controller
 
         $request->session()->flash('status', 'danger');
         $request->session()->flash('message', 'Silahkan cek kembali informasi login anda');
-        return back();
+        return redirect()->back();
     }
 
     public function registerView()
@@ -58,12 +60,30 @@ class UserController extends Controller
 
     public function loginAdminView()
     {
-
+        return view('auth.login_admin');
     }
 
     public function adminAuth(Request $request)
     {
+        $credentials = $request->validate([
+            'email' => 'required',
+            'password'=> 'required'
+        ]);
 
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            if (Auth::user()->role != 1 ) {
+                $request->session()->flash('status', 'danger');
+                $request->session()->flash('message', 'Silahkan cek kembali informasi login anda');
+                $request->session()->invalidate();
+                return redirect()->back();
+            }
+            return redirect()->intended('/admin');
+        }
+
+        $request->session()->flash('status', 'danger');
+        $request->session()->flash('message', 'Silahkan cek kembali informasi login anda');
+        return redirect()->back();
     }
 
     public function logout(Request $request)
