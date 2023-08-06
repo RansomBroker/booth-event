@@ -47,6 +47,9 @@
                                         </div>
                                         @endif
                                     </div>
+                                    <div class="text-center mb-3">
+                                        <a class="small" href="forgot-password.html">Lupa Password?</a>
+                                    </div>
                                     <button class="btn btn-primary btn-user btn-block">
                                         Login
                                     </button>

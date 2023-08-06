@@ -48,7 +48,7 @@ class UserController extends Controller
 
         $data = $validation;
         $data['password'] = bcrypt($validation['password']);
-        $data['role'] = 1;
+        $data['role'] = 0;
         $user->create($data);
 
         $request->session()->flash('status', 'success');
