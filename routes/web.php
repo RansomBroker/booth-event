@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,5 +25,11 @@ Route::controller(UserController::class)->name('user.')->group(function () {
     Route::get('/forgot-password', 'forgotPasswordView')->name('forgot.password.view');
     Route::post('/forgot-password/reset', 'resetPassword')->name('forgot.password.reset.process');
     Route::post('/logout', 'logout')->name('logout');
+    Route::post('/admin/logout', 'logoutAdmin')->name('admin.logout');
+});
+
+Route::controller(AdminController::class)->name('admin.')->group(function () {
+    Route::get('/admin' ,'dashboard')->name('dashboard');
+    Route::get('/admin/merchant', 'merchantView')->name('merchant.view');
 });
 

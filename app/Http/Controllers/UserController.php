@@ -88,6 +88,13 @@ class UserController extends Controller
 
     public function logout(Request $request)
     {
+        $request->session()->invalidate();
+        return redirect()->intended('/login');
+    }
 
+    public function logoutAdmin(Request $request)
+    {
+        $request->session()->invalidate();
+        return redirect()->intended('/admin/login');
     }
 }
