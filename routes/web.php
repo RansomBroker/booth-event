@@ -30,6 +30,11 @@ Route::controller(UserController::class)->name('user.')->group(function () {
 
 Route::controller(AdminController::class)->name('admin.')->group(function () {
     Route::get('/admin' ,'dashboard')->name('dashboard');
-    Route::get('/admin/merchant', 'merchantView')->name('merchant.view');
+    Route::get('/admin/booth', 'boothView')->name('booth.view');
+    Route::get('/admin/booth/add', 'boothAddView')->name('booth.add.view');
+    Route::post('/admin/boot/add/process', 'boothAdd' )->name('booth.add');
+    Route::get('/admin/both/edit/{booth}', 'boothEditView')->name('booth.edit.view');
+    Route::patch('/admin/booth/edit/process/{booth}', 'boothEdit')->name('booth.edit');
+    Route::delete('/admin/booth/delete/{booth}', 'boothDelete')->name('booth.delete');
 });
 

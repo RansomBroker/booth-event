@@ -62,7 +62,11 @@
 
 
 @include('includes.js')
-
+<script>
+    $(document).ready(function() {
+        $('#table').DataTable();
+    });
+</script>
 </body>
 
 </html>
