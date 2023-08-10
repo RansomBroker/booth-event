@@ -13,16 +13,17 @@ return new class extends Migration
     {
         Schema::create('redeem_codes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")
-                ->references("id")
-                ->on("users")
-                ->onUpdate("cascade")
-                ->onDelete("cascade");
-            $table->foreignId("booth_id")
-                ->references("id")
-                ->on("booths")
-                ->onUpdate("cascade")
-                ->onDelete("cascade");
+            $table->foreignId('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('booth_id')
+                ->references('id')
+                ->on('booths')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->string('code');
             $table->timestamps();
         });
     }

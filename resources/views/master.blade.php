@@ -62,6 +62,7 @@
 
 
 @include('includes.js')
+@yield('custom-js')
 <script>
     $(document).ready(function() {
         $('#table').DataTable();
