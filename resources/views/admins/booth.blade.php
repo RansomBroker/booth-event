@@ -29,7 +29,8 @@
                     <tr>
                         <th>No</th>
                         <th>Nama Booth</th>
-                        <th>Link Tautan Booth</th>
+                        <th>Link Tautan Redeem Code</th>
+                        <th>Link Tautan Booth Visitor</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -40,6 +41,7 @@
                         <td>{{ $i++ }}</td>
                         <td>{{ $booth->name }}</td>
                         <td><a href="{{ url('redeem/'.$booth->slug) }}" target="_blank">{{ url('redeem/'.$booth->slug) }}</a></td>
+                        <td><a href="{{ url('booth/'.$booth->slug) }}" target="_blank">{{ url('booth/'.$booth->slug) }}</a></td>
                         <td>
                             <form action="{{ route('admin.booth.delete', $booth->id) }}" method="post">
                                 @csrf

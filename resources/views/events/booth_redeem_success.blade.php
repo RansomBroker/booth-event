@@ -12,6 +12,9 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="p-5">
+                                <div class="w-100 d-inline-flex justify-content-center">
+                                    <img src="{{ asset('assets/img/gift-boxes.png') }}" alt="kado">
+                                </div>
                                 <h5 class="text-center">Terima kasih telah melakukan</h5>
                                 <h5 class="text-center">redeem Code di {{ $booth->name }}</p>
                                 <div class="w-100 d-flex justify-content-center">

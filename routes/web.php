@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BoothController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -49,5 +50,9 @@ Route::middleware('auth.check')->group(function () {
         Route::post('/redeem/submit/{booth}', 'boothRedeem')->name('booth.redeem');
         Route::get('/redeem/success/{booth}', 'boothRedeemSuccess')->name('booth.redeem.success');
     });
+});
 
+// booth controller
+Route::controller(BoothController::class)->name('booth.')->group(function () {
+    Route::get('/booth/{booth}', 'boothVisitorView')->name('visitor.view');
 });
